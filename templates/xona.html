@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xonalar</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+section {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home'%}">Asosi sahifa</a></li>
+            </ul>
+        </nav>
+    </header>
+<br>
+<hr>
+<h1>Xonalar haqida ma'lumot</h1>
+<br>
+<hr>
+{% for xona in xonalar %}
+<p>Xona raqami: {{ xona.raqam}}</p>
+<p>B'sh: {{ xona.bosh}}</p>
+<p>Xona turi: {{ xona.hona_turi}}</p>
+<p>Xona narxi: {{ xona.narx}}$</p>
+<p>{{ xona.necha_orinli}} kishiga mojjallangan</p>
+    <p><a href="/xona/{{xona.id}}/tahrirlash/"> <button>Tahrirlash</button></a>  <a href="/xona_ochir{{xona.id}}"><button>O'chirish</button></a></p>
+<br>
+<hr>
+{% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Qo'shish</button>
+    </form>
+ <footer>
+        &copy; 2024 Xonalar Sahifasi. Barcha huquqlar himoyalangan.
+    </footer>
+</body>
+</html>

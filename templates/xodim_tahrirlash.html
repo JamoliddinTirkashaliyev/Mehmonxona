@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xodim tahrirlash</title>
+</head>
+<body>
+    <form method="post">
+        {%csrf_token%}
+        <label>Iismi:</label><br>
+        <input name="ismi" type="text" value="{{xodim.ism}}">
+        <br>
+        <label>Yoshi:</label><br>
+        <input name="yosh" type="number" value="{{xodim.yosh}}">
+        <br>
+        <label>Lavozimi:</label><br>
+        <select name="l">
+            {% for lavozim in lavozimlar%}
+            <option value="{{ lavozim.id }}">{{ lavozim.nom }}</option>
+            {% endfor %}
+
+        </select>
+        <br>
+        <label>Ish vaqti:</label><br>
+        <input name="i_vaqt" type="text" value="{{xodim.ish_vaqti}}">
+        <br>
+        <label>Tel raqam:</label><br>
+        <input name="t_raqam" type="text" value="{{xodim.tel_raqam}}">
+        <br>
+        <label>Manzil:</label><br>
+        <input name="mazil" type="text" value="{{xodim.manzil}}">
+        <br>
+        <button type="submit">Tahrirlash</button>
+    </form>
+</body>
+</html>

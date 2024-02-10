@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lavozim tahrirlash</title>
+</head>
+<body>
+    <form method="post">
+        {%csrf_token%}
+        <label>{{lavozim.nom}}</label>
+        <br>
+        <label>Maosh:</label><br>
+        <input name="maosh" type="number" value="{{lavozim.maosh}}">
+        <br>
+
+        <button type="submit">Tahrirlash</button>
+    </form>
+</body>
+</html>

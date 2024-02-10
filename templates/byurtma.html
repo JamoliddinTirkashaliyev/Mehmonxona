@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buyurtmalar</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+section {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home'%}">Asosi sahifa</a></li>
+        </ul>
+    </nav>
+</header>
+<br>
+<hr>
+<h1>Buyurtmalar</h1>
+<br>
+<hr>
+{% for buyurtma in buyurtmalar %}
+<p>Xodim: {{ buyurtma.xodim}}</p>
+<p>Mijoz: {{ buyurtma.mijoz}}</p>
+<p>Xona: {{ buyurtma.xona}}</p>
+<p>Olingan sana: {{ buyurtma.olingan_sana}}</p>
+<p><a href="/buyurtma/{{buyurtma.id}}/tahrirlash/">
+    <button>Tahrirlash</button>
+</a> <a href="/buyurtma_ochir/{{buyurtma.id}}">
+    <button>O'chirish</button>
+</a></p>
+<br>
+<hr>
+{% endfor %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Qo'shish</button>
+</form>
+<footer>
+    &copy; 2024 Buyurtma Sahifasi. Barcha huquqlar himoyalangan.
+</footer>
+
+</body>
+</html>

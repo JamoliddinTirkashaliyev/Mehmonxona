@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buyurtma tahrirlash</title>
+</head>
+<body>
+<form method="post">
+    {%csrf_token%}
+    <label>Xodim:</label><br>
+    <select name="xodim">
+        {% for xodim in xodimlar %}
+        <option value="{{xodim.id}}">{{xodim.ism}}</option>
+        {% endfor %}
+
+    </select>
+    <br>
+    <label>Mijoz:</label><br>
+    <input name="mijoz" type="text" value="{{buyurtma.mijoz}}">
+    <br>
+    <label>Xona raqami:</label><br>
+    <select name="xona">
+        {% for xona in xonalar %}
+        <option value="{{xona.id}}">{{xona.raqam}}</option>
+        {% endfor %}
+
+    </select>
+    <br>
+
+    <button type="submit">Tahrirlash</button>
+</form>
+</body>
+</html>

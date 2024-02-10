@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xodimlar</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+section {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home'%}">Asosi sahifa</a></li>
+            </ul>
+        </nav>
+    </header>
+<br>
+<hr>
+<h1>Mehmonxona ishchilari haqida ma'lumot</h1>
+<br>
+<hr>
+{% for xodim in xodimlar %}
+<p>Ismi: {{ xodim.ism}}</p>
+<p>Yoshi: {{ xodim.yosh}}</p>
+<p>Lavozimi: {{ xodim.lavozim}}</p>
+<p>Tel raqam: {{ xodim.tel_raqam}}</p>
+<p>Yashash manzili: {{ xodim.manzil}}</p>
+    <p><a href="/xodim/{{xodim.id}}/tahrirlash/"> <button>Tahrirlash</button></a>    <a href="/xodim_ochir/{{xodim.id}}"><button>O'chirish</button></a></p>
+<br>
+<hr>
+{% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Qo'shish</button>
+    </form>
+ <footer>
+        &copy; 2024 Xodimlar Sahifasi. Barcha huquqlar himoyalangan.
+    </footer>
+</body>
+</html>

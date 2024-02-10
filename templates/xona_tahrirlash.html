@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xona tahrirlash</title>
+</head>
+<body>
+    <form method="post">
+        {%csrf_token%}
+        <label>Necha o'rinli:</label><br>
+        <input name="n_orinli" type="text" value="{{xona.necha_orinli}}">
+        <br>
+        <label>Bo'sh:</label><br>
+        <input name="bosh" type="checkbox" value="{{xona.bosh}}">
+        <br>
+        <label>Narx:</label><br>
+        <input name="narx" type="text" value="{{xona.narx}}">
+        <br>
+
+        <button type="submit">Tahrirlash</button>
+    </form>
+</body>
+</html>
